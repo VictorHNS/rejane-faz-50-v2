@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Aniversário de 50 Anos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange-primary: #ff6b00;
+            --orange-light: #ff8c3f;
+            --orange-dark: #e05a00;
+            --orange-ultra-light: #fff0e6;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        .title {
+            font-family: 'Playfair Display', serif;
+        }
+        .envelope {
+            transition: transform 1s ease-in-out;
+        }
+        .envelope.open {
+            transform: scale(1.05);
+        }
+        .card {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 1s ease-out;
+        }
+        .card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .countdown {
+            font-family: 'Playfair Display', serif;
+        }
+        .rsvp-form label {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .rsvp-form input, .rsvp-form select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+        }
+        .rsvp-form button {
+            background-color: var(--orange-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .rsvp-form button:hover {
+            background-color: var(--orange-dark);
+        }
+        .golden-border {
+            border: 2px solid #ffc107;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+        }
+        .bg-orange-gradient {
+            background: linear-gradient(to right, var(--orange-primary), var(--orange-light));
+        }
+        .text-orange-primary {
+            color: var(--orange-primary);
+        }
+        .text-orange-dark {
+            color: var(--orange-dark);
+        }
+        .bg-orange-light {
+            background-color: var(--orange-ultra-light);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-3xl mx-auto">
+        <!-- Envelope -->
+        <div id="envelope" class="envelope bg-orange-gradient p-1 rounded-lg shadow-xl cursor-pointer golden-border">
+            <div class="bg-white p-6 rounded-lg text-center">
+                <h2 class="title text-3xl md:text-4xl font-bold text-orange-primary mb-2">Convite Especial</h2>
+                <audio controls>
+                    <source src="Ride.mp3" type="audio/mpeg">
+                    <source src="Ride.mp3" type="audio/ogg">
+                    
+                  </audio>
+                <p class="text-gray-600 mb-4">Clique para abrir</p>
+                <div class="flex justify-center">
+                    <svg class="w-16 h-16 text-orange-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5 4a2 2 0 012-2h6a2 2 0 012 2v1h2a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2V4zm6 0H9v1h2V4zM5 7H3v10h14V7h-2v1a1 1 0 01-1 1H6a1 1 0 01-1-1V7zm4 3a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card (initially hidden) -->
+        
+        <div id="card" class="card hidden">
+            <div class="bg-orange-gradient p-1 rounded-lg shadow-2xl mt-8 golden-border">
+                <div class="bg-white p-8 rounded-lg text-center relative overflow-hidden">
+                    <!-- Decorative elements -->
+                    <div class="absolute top-0 left-0 w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="color: #fff0e6;">
+                            <path fill="currentColor" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                        </svg>
+                    </div>
+                  
+                    <div class="relative z-10">
+                        <div class="flex justify-center mb-6">
+                            <div class="w-24 h-24 rounded-full bg-orange-gradient flex items-center justify-center text-white text-4xl font-bold border-4 border-white shadow-lg">
+                                50
+                            </div>
+                        </div>
+                        
+                        <h1 class="title text-4xl md:text-5xl font-bold text-orange-primary mb-4">Celebração de 50 Anos</h1>
+                        
+                        <p class="text-xl text-gray-700 mb-6">Com grande alegria convidamos você para celebrar</p>
+                        
+                        <h2 class="title text-3xl font-bold text-orange-dark mb-2">Rejane Nunes</h2>
+                        <p class="text-gray-600 mb-8">Meio século de vida, histórias e conquistas</p>
+                        
+                        <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-orange-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <span class="text-lg">27 de Julho de 2025</span>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-orange-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-lg">19:00 - 00:00</span>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-orange-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span class="text-lg">Salão de Festas Elegance</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="title text-2xl font-bold text-orange-dark mb-4">Contagem Regressiva</h3>
+                            <div class="flex justify-center space-x-4">
+                                <div class="countdown bg-orange-light p-3 rounded-lg w-20 text-center">
+                                    <div id="days" class="text-3xl font-bold text-orange-primary">00</div>
+                                    <div class="text-sm text-gray-600">Dias</div>
+                                </div>
+                                <div class="countdown bg-orange-light p-3 rounded-lg w-20 text-center">
+                                    <div id="hours" class="text-3xl font-bold text-orange-primary">00</div>
+                                    <div class="text-sm text-gray-600">Horas</div>
+                                </div>
+                                <div class="countdown bg-orange-light p-3 rounded-lg w-20 text-center">
+                                    <div id="minutes" class="text-3xl font-bold text-orange-primary">00</div>
+                                    <div class="text-sm text-gray-600">Minutos</div>
+                                </div>
+                                <div class="countdown bg-orange-light p-3 rounded-lg w-20 text-center">
+                                    <div id="seconds" class="text-3xl font-bold text-orange-primary">00</div>
+                                    <div class="text-sm text-gray-600">Segundos</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="title text-2xl font-bold text-orange-dark mb-4">Informações</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-xl mx-auto">
+                                <div>
+                                    <h4 class="font-bold text-orange-primary">Traje</h4>
+                                    <p>Esporte fino</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-orange-primary">Estacionamento</h4>
+                                    <p>Disponível no local</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-orange-primary">Música</h4>
+                                    <p>DJ e banda ao vivo</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-orange-primary">Buffet</h4>
+                                    <p>Jantar completo e sobremesas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <button id="rsvp-button" class="bg-orange-gradient text-white px-6 py-3 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                                Confirmar Presença
+                            </button>
+                        </div>
+                        
+                        <div id="rsvp-form" class="hidden bg-orange-light p-6 rounded-lg max-w-md mx-auto mb-8">
+                            <h3 class="title text-2xl font-bold text-orange-dark mb-4">Confirme sua presença</h3>
+                            <form class="rsvp-form">
+                                <div>
+                                    <label for="name">Nome completo</label>
+                                    <input type="text" id="name" required>
+                                </div>
+                                <div>
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                <div>
+                                    <label for="phone">Telefone</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                                <div>
+                                    <label for="guests">Número de acompanhantes</label>
+                                    <select id="guests">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="message">Mensagem (opcional)</label>
+                                    <input type="text" id="message">
+                                </div>
+                                <button type="submit">Enviar confirmação</button>
+                            </form>
+                        </div>
+                        
+                        <p class="text-gray-600 italic">"Celebrar meio século de vida é celebrar a sabedoria, as conquistas e as memórias que construímos ao longo do caminho."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Envelope opening animation
+        document.getElementById('envelope').addEventListener('click', function() {
+            this.classList.add('open');
+            
+            setTimeout(() => {
+                document.getElementById('card').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('card').classList.add('visible');
+                    createConfetti();
+                }, 100);
+            }, 500);
+        });
+
+        // RSVP form toggle
+        document.getElementById('rsvp-button').addEventListener('click', function() {
+            const form = document.getElementById('rsvp-form');
+            form.classList.toggle('hidden');
+        });
+
+        // Form submission (demo)
+        document.querySelector('.rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado por confirmar sua presença! Estamos ansiosos para celebrar com você.');
+            document.getElementById('rsvp-form').classList.add('hidden');
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            const eventDate = new Date('July, 2025 13:30:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Confetti animation
+        function createConfetti() {
+            const colors = ['#ff6b00', '#ff8c3f', '#ffa366', '#ffb380', '#ffc107'];
+            const container = document.body;
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939c604f51c0caaf',t:'MTc0NjIzOTg0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
